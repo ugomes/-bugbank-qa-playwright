@@ -47,10 +47,8 @@ Este documento detalha os casos de teste para a aplicação Bug Bank, baseados n
   4. Validar a mensagem de erro para o campo `Senha`.
   5. Validar a mensagem de erro para o campo `Confirmação de senha`.
 - **Resultado Esperado:**
-  - A mensagem "Email não pode ser vazio" deve ser exibida.
-  - A mensagem "Nome não pode ser vazio" deve ser exibida.
-  - A mensagem "Senha não pode ser vazio" deve ser exibida.
-  - A mensagem "Confirmar senha não pode ser vazio" deve ser exibida.
+  - A mensagem "É campo obrigatório".
+ 
 
 ### CT.CAD.04: Validar erro ao cadastrar com senhas que não coincidem
 
@@ -62,7 +60,7 @@ Este documento detalha os casos de teste para a aplicação Bug Bank, baseados n
   3. Inserir uma senha diferente no campo `Confirmação de senha`.
   4. Clicar no botão "Cadastrar".
 - **Resultado Esperado:**
-  - Uma mensagem de erro indicando que as senhas não conferem deve ser exibida.
+  - Uma mensagem de erro "As senhas não são iguais" é exibida.
 
 ---
 

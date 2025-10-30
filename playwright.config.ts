@@ -2,7 +2,7 @@ import { defineConfig, devices } from '@playwright/test';
 
 export default defineConfig({
   // Diretório onde os arquivos de teste (specs) estão localizados.
-  testDir: './web/test',
+  testDir: '.',
 
   // Rodar testes em paralelo.
   fullyParallel: true,
@@ -26,8 +26,8 @@ export default defineConfig({
 
   // Configuração dos projetos para rodar nos principais navegadores.
   projects: [
-    { name: 'chromium', use: { ...devices['Desktop Chrome'] } },
-    { name: 'firefox', use: { ...devices['Desktop Firefox'] } },
-    { name: 'webkit', use: { ...devices['Desktop Safari'] } },
-  ],
+    {name: 'chromium', use: { ...devices['Desktop Chrome'], headless: false } },
+    { name: 'firefox', use: { ...devices['Desktop Firefox'], headless: false } },
+   
+    ],
 });
