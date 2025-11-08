@@ -50,9 +50,9 @@ Este documento apresenta a análise inicial dos requisitos funcionais da aplica�
 |-----------|--------------------------------------------------------------------------------------------------------------------------|
 | RF.CAD.01 | Os campos `Nome`, `Email`, `Senha` e `Confirmação de senha` são de preenchimento obrigatório.                                |
 | RF.CAD.02 | Tentativa de cadastro sem preencher nome deve visualizar a mensagem "Nome não pode ser vazio".                             |
-| RF.CAD.03 | Tentativa de cadastro sem preencher email deve visualizar a mensagem "Email não pode ser vazio".                             |
-| RF.CAD.04 | Tentativa de cadastro sem preencher senha deve visualizar a mensagem "Senha não pode ser vazio".                             |
-| RF.CAD.05 | Tentativa de cadastro sem preencher confirmação de senha deve visualizar a mensagem "Confirmar senha não pode ser vazio".    |
+| RF.CAD.03 | Tentativa de cadastro sem preencher email deve visualizar a mensagem "É campo obrigatório".                             |
+| RF.CAD.04 | Tentativa de cadastro sem preencher senha deve visualizar a mensagem "É campo obrigatório".                             |
+| RF.CAD.05 | Tentativa de cadastro sem preencher confirmação de senha deve visualizar a mensagem "É campo obrigatório".    |
 | RF.CAD.06 | Deixar ativo a opção "Criar conta com saldo" deve criar conta com saldo de R$ 1.000,00.                                    |
 | RF.CAD.07 | Deixar inativo a opção "Criar conta com saldo" deve criar conta com saldo de R$ 0,00.                                      |
 | RF.CAD.08 | `Senha` e `Confirmação de senha` precisam ser iguais.                                                                      |

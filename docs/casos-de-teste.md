@@ -62,6 +62,77 @@ Este documento detalha os casos de teste para a aplicação Bug Bank, baseados n
 - **Resultado Esperado:**
   - Uma mensagem de erro "As senhas não são iguais" é exibida.
 
+### CT.CAD.05: Validar erro ao tentar cadastrar com nome em branco
+
+- **Referências:** US.01, RF.CAD.02
+- **Pré-condição:** Estar na página de cadastro.
+- **Passos:**
+  1. Preencher os campos `Email`, `Senha` e `Confirmação de senha` com dados válidos.
+  2. Deixar o campo `Nome` em branco.
+  3. Clicar no botão "Cadastrar".
+- **Resultado Esperado:**
+  - A mensagem "Nome não pode ser vazio." deve ser exibida para o campo `Nome`.
+
+### CT.CAD.06: Validar erro ao tentar cadastrar com email em branco  
+- **Referências:** US.01, RF.CAD.03
+- **Pré-condição:** Estar na página de cadastro.
+- **Passos:**
+  1. Preencher os campos `Nome`, `Senha` e `Confirmação de senha` com dados válidos.
+  2. Deixar o campo `Email` em branco.
+  3. Clicar no botão "Cadastrar".
+- **Resultado Esperado:**
+  - A mensagem "Email não pode ser vazio" deve ser exibida para o campo `Email`.
+
+### CT.CAD.07: Validar erro ao tentar cadastrar com senha em branco
+
+- **Referências:** US.01, RF.CAD.04
+- **Pré-condição:** Estar na página de cadastro.
+- **Passos:**
+  1. Preencher os campos `Nome`, `Email` e `Confirmação de senha` com dados válidos.
+  2. Deixar o campo `Senha` em branco.
+  3. Clicar no botão "Cadastrar".
+  - **Resultado Esperado:**
+  - A mensagem "Senha não pode ser vazio" deve ser exibida para o campo `Senha`.
+  
+### CT.CAD.08: Validar erro ao tentar cadastrar com confirmação de senha em branco
+
+- **Referências:** US.01, RF.CAD.05
+- **Pré-condição:** Estar na página de cadastro.
+- **Passos:**
+  1. Preencher os campos `Nome`, `Email` e `Senha` com dados válidos.
+  2. Deixar o campo `Confirmação de senha` em branco.
+  3. Clicar no botão "Cadastrar".
+- **Resultado Esperado:** 
+  - A mensagem "Confirmar senha não pode ser vazio" deve ser exibida para o campo `Confirmação de senha`.
+  
+### CT.CAD.09: Validar cadastro com saldo de R$ 1.000,00
+
+- **Referências:** US.03, RF.CAD.06
+- **Pré-condição:** Estar na página de cadastro.
+- **Passos:**
+  1. Preencher todos os campos obrigatórios com dados válidos.
+  2. Ativar a opção "Criar conta com saldo?".
+  3. Clicar no botão "Cadastrar".
+- **Resultado Esperado:**
+  - Uma mensagem de sucesso "A conta XXX-X foi criada com sucesso" deve ser exibida.
+  - O usuário deve poder fechar a mensagem de sucesso.
+  - O saldo da conta deve ser de R$ 1.000,00.
+  
+### CT.CAD.10: Validar cadastro com saldo de R$ 0,00
+
+- **Referências:** US.03, RF.CAD.07
+- **Pré-condição:** Estar na página de cadastro.
+- **Passos:**
+  1. Preencher todos os campos obrigatórios com dados válidos.
+  2. Desativar a opção "Criar conta com saldo?".
+  3. Clicar no botão "Cadastrar".
+- **Resultado Esperado:**
+  - Uma mensagem de sucesso "A conta XXX-X foi criada com sucesso" deve ser exibida.
+  - O usuário deve poder fechar a mensagem de sucesso.
+  - O saldo da conta deve ser de R$ 0,00.
+ 
+
+
 ---
 
 ## Funcionalidade: Login
@@ -98,6 +169,16 @@ Este documento detalha os casos de teste para a aplicação Bug Bank, baseados n
   1. Clicar no botão "Acessar" sem preencher os campos.
 - **Resultado Esperado:**
   - A mensagem "Usuário e senha precisam ser preenchidos" deve ser exibida.
+
+### CT.LOG.04: Validar mensagem campos obrigatórios
+
+- **Referências:** US.04, RF.LOG.01, RF.LOG.0 
+- **Pré-condição:** Estar na página de login.
+- **Passos:**
+  1. Clicar no botão "Acessar" sem preencher os campos.
+  - **Resultado Esperado:**
+  - A mensagem "É campo obrigatório" deve ser exibida para ambos os campos.
+  
 
 ---
 

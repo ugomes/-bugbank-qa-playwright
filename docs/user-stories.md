@@ -54,7 +54,10 @@ Este documento traduz os requisitos da aplicação em Histórias de Usuário, fo
 **Critérios de Aceite (AC):**
 - AC 01: Ao inserir credenciais válidas e clicar em "Acessar", devo ser redirecionado para a página de extrato/home.
 - AC 02: Se eu tentar acessar com um email não cadastrado ou senha incorreta, o acesso não deve ser autorizado e uma mensagem de erro deve ser exibida.
-- AC 03: Se eu tentar acessar sem preencher os campos `Email` e `Senha`, a mensagem "Usuário e senha precisam ser preenchidos" deve ser exibida.
+- AC 03: Se eu tentar acessar sem preencher os campos `Email` e `Senha`, a mensagem "Usuário e senha precisam ser preenchidos" deve ser 
+exibida.
+- AC 04: Se eu tentar acessar com campos vazios para `Email` ou `Senha`, deve exibir "É campo obrigatório".
+
 
 ---
 

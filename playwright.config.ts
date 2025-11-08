@@ -12,7 +12,7 @@ export default defineConfig({
 
   use: {
     // URL base para as ações de navegação (ex: page.goto('/')).
-    baseURL: 'https://bugbank.netlify.app',
+    baseURL: 'http://localhost:3000',
 
     // Captura screenshots apenas em caso de falha.
     screenshot: 'only-on-failure',
@@ -27,7 +27,7 @@ export default defineConfig({
   // Configuração dos projetos para rodar nos principais navegadores.
   projects: [
     {name: 'chromium', use: { ...devices['Desktop Chrome'], headless: false } },
-    { name: 'firefox', use: { ...devices['Desktop Firefox'], headless: false } },
+    
    
     ],
 });

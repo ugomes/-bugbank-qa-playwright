@@ -10,13 +10,19 @@ class CadastroPage {
         this.campoConfirmacaoSenha = registrationForm.getByPlaceholder('Informe a confirmação da senha');
         this.btnCadastrar = registrationForm.getByRole('button', { name: 'Cadastrar' });
         this.toggleContaComSaldo = this.page.locator('#toggleAddBalance');
-        this.toggleVisualContainer = page.locator('label:has(#toggleAddBalance)');
+        this.toggleVisualContainer = this.page.locator('label:has(#toggleAddBalance)');
         this.mensagemSucessoModal = this.page.getByText(/A conta .* foi criada com sucesso/);
-        this.erroCampoEmail = this.campoEmail.locator('+ p');
-        this.erroCampoSenha = this.campoSenha.locator('+ p');
-        this.erroConfirmacaoSenha = this.campoConfirmacaoSenha.locator('+ p');
+        this.errocampoObrigatorio = this.page.getByText('É campo obrigatório');
+        this.erroCampoEmail = this.page.getByText('Email não pode ser vazio');
+        this.erroCampoSenha = this.page.getByText('Campo Senha não pode ser vazio');
+        this.erroCampoNome = this.page.getByText('Nome não pode ser vazio.');
+        this.erroConfirmacaoSenha = this.campoConfirmacaoSenha.locator('Confirmar senha não pode ser vazio');
         this.erroSenhaNaoCoincide = this.page.getByText('As senhas não são iguais');
+        this.btnFechar = this.page.locator('#btnCloseModal');
+        
     }
+        
+        
     async preencherCampoNome (nome) {
         await this.campoNome.fill(nome);
     }
@@ -44,8 +50,29 @@ async desativarContaComSaldo() {
   await this.toggleContaComSaldo.uncheck();
   
 }
+async fecharModalSucesso() {
+  await this.btnFechar.click();
 
+    }
 
+    async realizarCadastroComSaldo(nome, email, password) {
+        await this.preencherCampoNome(nome);
+        await this.preencherCampoEmail(email);
+        await this.preencherCampoSenha(password);
+        await this.preencherConfirmacaoSenha(password);
+        await this.ativarContaComSaldo();
+        await this.clicarBotaoCadastrar();
+        await this.fecharModalSucesso();
+    }
+    async realizarCadastroSemSaldo(nome, email, password) {
+        
+        await this.preencherCampoNome(nome);
+        await this.preencherCampoEmail(email);
+        await this.preencherCampoSenha(password);
+        await this.preencherConfirmacaoSenha(password);
+        await this.clicarBotaoCadastrar();
+        await this.fecharModalSucesso();
+    }
 
 }
 module.exports = { CadastroPage };
