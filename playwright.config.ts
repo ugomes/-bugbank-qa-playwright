@@ -26,8 +26,6 @@ export default defineConfig({
 
   // Configuração dos projetos para rodar nos principais navegadores.
   projects: [
-    {name: 'chromium', use: { ...devices['Desktop Chrome'], headless: false } },
-    
-   
-    ],
+    {name: 'chromium', use: { ...devices['Desktop Chrome'], headless: true } },
+  ],
 });
