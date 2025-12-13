@@ -13,6 +13,8 @@
 
 > **Integração Contínua:** Os testes E2E são executados automaticamente a cada push ou pull request na branch `main` usando o GitHub Actions. O relatório de testes é salvo como artefato e pode ser baixado na aba "Actions" do repositório.
 
+> **Nota:** Todos os testes automatizados foram validados e executados localmente antes da configuração da pipeline CI.
+
 > [!WARNING]
 > **Este projeto está em desenvolvimento.**
 > As funcionalidades e a estrutura do código podem mudar. O objetivo principal é o estudo e a aplicação de boas práticas em automação de testes com Playwright.
