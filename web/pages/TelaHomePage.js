@@ -2,10 +2,10 @@
 class TelaHomePage {
     constructor(page) {
         this.page = page;
-        this.botaoTransferencia = this.page.getByText('TRANSFERÊNCIA');
-        this.botaoPagamentos = this.page.getByText('PAGAMENTOS');
-        this.botaoExtrato = this.page.getByText('EXTRATO');
-        this.botaoSaque = this.page.getByText('SAQUE');
+        this.botaoTransferencia = this.page.locator('#btn-TRANSFERÊNCIA');
+        this.botaoPagamentos = this.page.locator('#btn-PAGAMENTOS');
+        this.botaoExtrato = this.page.locator('#btn-EXTRATO');
+        this.botaoSaque = this.page.locator('#btn-SAQUE');
     }
 
     async clicarBotaoTransferencia() {
@@ -25,3 +25,5 @@ class TelaHomePage {
     
         
 }
+
+module.exports = { TelaHomePage };

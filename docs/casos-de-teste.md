@@ -1,3 +1,15 @@
+### CT.EXT.04: Validar que o valor de débito no extrato é exibido em vermelho e com sinal negativo
+
+- **Referências:** US.05, RF.EXT.01
+- **Pré-condição:** Ter realizado uma transferência que debite o saldo.
+- **Passos:**
+  1. Realizar uma transferência de valor para outra conta.
+  2. Acessar o extrato da conta de origem.
+  3. Verificar a transação de débito.
+- **Resultado Esperado:**
+  - O valor da transação de débito deve ser exibido em vermelho e com sinal negativo (ex: -R$ 200,00).
+  - O valor deve estar visualmente destacado como débito.
+  - **Status:** Teste automatizado implementado em test-extrato.spec.js
 # 📋 Casos de Teste – Bug Bank
 
 Este documento detalha os casos de teste para a aplicação Bug Bank, baseados nos [Requisitos Funcionais](analise-requisitos.md) e nas [Histórias de Usuário](user-stories.md).
@@ -224,3 +236,16 @@ Este documento detalha os casos de teste para a aplicação Bug Bank, baseados n
 - **Resultado Esperado:**
   - Uma mensagem de erro "Saldo insuficiente para realizar a transferência" deve ser exibida.
   - A transferência não deve ser concluída.
+
+### CT.EXT.04: Validar que o valor de débito no extrato é exibido em vermelho e com sinal negativo
+
+- **Referências:** US.05, RF.EXT.01
+- **Pré-condição:** Ter realizado uma transferência que debite o saldo.
+- **Passos:**
+  1. Realizar uma transferência de valor para outra conta.
+  2. Acessar o extrato da conta de origem.
+  3. Verificar a transação de débito.
+- **Resultado Esperado:**
+  - O valor da transação de débito deve ser exibido em vermelho e com sinal negativo (ex: -R$ 200,00).
+  - O valor deve estar visualmente destacado como débito.
+  - **Status:** Teste automatizado implementado em test-extrato.spec.js

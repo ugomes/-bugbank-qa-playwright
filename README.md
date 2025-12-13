@@ -6,6 +6,13 @@
   <img src="https://img.shields.io/badge/license-MIT-blue" alt="Licença MIT">
 </p>
 
+<p align="center">
+   <!-- Substitua <SEU_USUARIO> e <SEU_REPOSITORIO> pelo caminho correto do seu repositório no GitHub -->
+   <img src="https://github.com/<SEU_USUARIO>/<SEU_REPOSITORIO>/actions/workflows/playwright.yml/badge.svg" alt="Status da Pipeline Playwright">
+</p>
+
+> **Integração Contínua:** Os testes E2E são executados automaticamente a cada push ou pull request na branch `main` usando o GitHub Actions. O relatório de testes é salvo como artefato e pode ser baixado na aba "Actions" do repositório.
+
 > [!WARNING]
 > **Este projeto está em desenvolvimento.**
 > As funcionalidades e a estrutura do código podem mudar. O objetivo principal é o estudo e a aplicação de boas práticas em automação de testes com Playwright.

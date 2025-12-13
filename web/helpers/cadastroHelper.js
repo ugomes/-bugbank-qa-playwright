@@ -16,7 +16,7 @@ export async function cadastrarSemSaldo(page, nome, email, password) {
     const loginPage = new LoginPage(page);
     const cadastroPage = new CadastroPage(page);
 
-    await loginPage.clicarBotaoRegistra();
+    await loginPage.clicarBotaoRegistrar();
     await cadastroPage.realizarCadastroSemSaldo(nome, email, password);
     
     

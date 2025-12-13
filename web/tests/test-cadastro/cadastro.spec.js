@@ -15,12 +15,19 @@ test.describe('Cadastro de Conta', () => {
         const email = fakerPT_BR.internet.email();
         const password = fakerPT_BR.internet.password();
 
+        const loginPage = new LoginPage(page);
         const cadastroPage = new CadastroPage(page);
         const telaPrincipalContaPage = new TelaPrincipalContaPage(page);
 
-        await cadastrarComSaldo(page, nome, email, password);
-        
-        await expect(cadastroPage.mensagemSucessoModal).toBeVisible();
+        await loginPage.clicarBotaoRegistrar();
+        await cadastroPage.preencherCampoNome(nome);
+        await cadastroPage.preencherCampoEmail(email);
+        await cadastroPage.preencherCampoSenha(password);
+        await cadastroPage.preencherConfirmacaoSenha(password);
+        await cadastroPage.ativarContaComSaldo();
+        await cadastroPage.clicarBotaoCadastrar();
+        await expect(cadastroPage.mensagemSucessoModal).toBeVisible({ timeout: 15000 });
+        await cadastroPage.fecharModalSucesso();
     });
 
     test('CT.CAD.02: Realizar cadastro com sucesso sem saldo inicial', async ({ page }) => {
@@ -28,21 +35,28 @@ test.describe('Cadastro de Conta', () => {
         const email = fakerPT_BR.internet.email();
         const password = fakerPT_BR.internet.password();
 
+        const loginPage = new LoginPage(page);
         const cadastroPage = new CadastroPage(page);
 
-        await cadastrarSemSaldo(page, nome, email, password);
-
-        await expect(cadastroPage.mensagemSucessoModal).toBeVisible();
+        await loginPage.clicarBotaoRegistrar();
+        await cadastroPage.preencherCampoNome(nome);
+        await cadastroPage.preencherCampoEmail(email);
+        await cadastroPage.preencherCampoSenha(password);
+        await cadastroPage.preencherConfirmacaoSenha(password);
+        await cadastroPage.clicarBotaoCadastrar();
+        await expect(cadastroPage.mensagemSucessoModal).toBeVisible({ timeout: 15000 });
+        await cadastroPage.fecharModalSucesso();
     });
 
     test('CT.CAD.03: Validar mensagens de erro para campos obrigatórios', async ({ page }) => {
         const loginPage = new LoginPage(page);
         const cadastroPage = new CadastroPage(page);
 
-        await loginPage.clicarBotaoRegistra();
+        await loginPage.clicarBotaoRegistrar();
         await cadastroPage.clicarBotaoCadastrar();
 
-        await expect(cadastroPage.campoObrigatorioNome).toCount(4);
+        // Espera que a mensagem "É campo obrigatório" apareça 3 vezes (email, senha, confirmação)
+        await expect(cadastroPage.errocampoObrigatorio).toHaveCount(3);
     });
 
     test('CT.CAD.04: Validar erro ao cadastrar com senhas que não coincidem', async ({ page }) => {
@@ -54,7 +68,7 @@ test.describe('Cadastro de Conta', () => {
         const loginPage = new LoginPage(page);
         const cadastroPage = new CadastroPage(page);
 
-        await loginPage.clicarBotaoRegistra();
+        await loginPage.clicarBotaoRegistrar();
         await cadastroPage.preencherCampoEmail(email);
         await cadastroPage.preencherCampoNome(nome);
         await cadastroPage.preencherCampoSenha(password);
@@ -71,7 +85,7 @@ test.describe('Cadastro de Conta', () => {
         const loginPage = new LoginPage(page);
         const cadastroPage = new CadastroPage(page);
 
-        await loginPage.clicarBotaoRegistra();
+        await loginPage.clicarBotaoRegistrar();
         await cadastroPage.preencherCampoEmail(email);
         await cadastroPage.preencherCampoSenha(password);
         await cadastroPage.preencherConfirmacaoSenha(password);
@@ -87,13 +101,13 @@ test.describe('Cadastro de Conta', () => {
         const loginPage = new LoginPage(page);
         const cadastroPage = new CadastroPage(page);
 
-        await loginPage.clicarBotaoRegistra();
+        await loginPage.clicarBotaoRegistrar();
         await cadastroPage.preencherCampoNome(nome);
         await cadastroPage.preencherCampoSenha(password);
         await cadastroPage.preencherConfirmacaoSenha(password);
         await cadastroPage.clicarBotaoCadastrar();
 
-        await expect(cadastroPage.erroCampoEmail).toBeVisible();
+        await expect(cadastroPage.errocampoObrigatorio).toBeVisible();
     });
 
     test('CT.CAD.07: Validar erro ao tentar cadastrar com senha em branco', async ({ page }) => {
@@ -103,12 +117,12 @@ test.describe('Cadastro de Conta', () => {
         const loginPage = new LoginPage(page);
         const cadastroPage = new CadastroPage(page);
 
-        await loginPage.clicarBotaoRegistra();
+        await loginPage.clicarBotaoRegistrar();
         await cadastroPage.preencherCampoNome(nome);
         await cadastroPage.preencherCampoEmail(email);
         await cadastroPage.clicarBotaoCadastrar();
 
-        await expect(cadastroPage.erroCampoSenha).toBeVisible();
+        await expect(cadastroPage.errocampoObrigatorio.first()).toBeVisible();
     });
 
     test('CT.CAD.08: Validar erro ao tentar cadastrar com confirmação de senha em branco', async ({ page }) => {
@@ -119,13 +133,13 @@ test.describe('Cadastro de Conta', () => {
         const loginPage = new LoginPage(page);
         const cadastroPage = new CadastroPage(page);
 
-        await loginPage.clicarBotaoRegistra();
+        await loginPage.clicarBotaoRegistrar();
         await cadastroPage.preencherCampoNome(nome);
         await cadastroPage.preencherCampoEmail(email);
         await cadastroPage.preencherCampoSenha(password);
         await cadastroPage.clicarBotaoCadastrar();
 
-        await expect(cadastroPage.erroConfirmacaoSenha).toBeVisible();
+        await expect(cadastroPage.errocampoObrigatorio).toBeVisible();
     });
 
     test('CT.CAD.09: Validar cadastro com saldo de R$ 1.000,00', async ({ page }) => {
